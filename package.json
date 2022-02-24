@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "dev": "esbuild ./src/background/main.ts --bundle --outfile=./build/main.js --platform=neutral --watch"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.178",
+    "esbuild": "^0.14.23",
+    "typescript": "^4.5.5"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "h2l extension",
+  "version": "0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "./build/main.js"
+  },
+  "permissions": ["tabs", "scripting"],
+  "action": {},
+  "host_permissions": ["*://*.beatport.com/release/"]
+}
