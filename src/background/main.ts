@@ -7,18 +7,16 @@ const getDataOfTab = async (tabId: number) => {
     world: "MAIN"
   })
 
-  return injectionResults[0]
+  return injectionResults[0].result
 }
 
 chrome.runtime.onInstalled.addListener(async () => {
-  console.clear()
-
   const releasesTabs = await chrome.tabs.query({
     currentWindow: true,
     url: "*://*.beatport.com/release/*"
   })
 
-  const results = []
+  const results: any[] = []
 
   for (const tab of releasesTabs) {
     if (tab.id === undefined) {
@@ -33,5 +31,22 @@ chrome.runtime.onInstalled.addListener(async () => {
     results.push(await getDataOfTab(tab.id))
   }
 
-  console.log(results)
+  const outputTab = await chrome.tabs.create({
+    url: "../src/window/output.html",
+    index: 0
+  })
+
+  if (outputTab.id === undefined) {
+    throw new Error("output tab id undefined")
+  }
+
+  chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+    if (tabId !== outputTab.id || changeInfo.status !== "complete") {
+      return
+    }
+
+    chrome.tabs.connect(tabId)
+    chrome.tabs.sendMessage(tabId, results)
+    console.log(results)
+  })
 })
