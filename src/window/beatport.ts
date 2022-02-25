@@ -1,4 +1,4 @@
-import { BeatportWindow } from "./beatport-window"
+import { BeatportWindow } from "../types"
 
 export const getPageData = () => {
   try {

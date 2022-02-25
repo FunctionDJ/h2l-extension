@@ -3,9 +3,9 @@
     "strict": true,
     "allowJs": true,
     "checkJs": true,
-    "lib": ["ES2021"],
+    "lib": ["ESNext"],
     "outDir": "./dist",
-    "target": "ES2021"
+    "target": "ESNext"
   },
   "include": ["./src/background/*.ts"]
 }

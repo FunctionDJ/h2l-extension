@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "esbuild ./src/background/main.ts --bundle --outfile=./build/main.js --platform=neutral --watch"
+    "dev": "node ./dev.js"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.178",

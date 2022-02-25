@@ -3,5 +3,5 @@
   "compilerOptions": {
     "lib": ["DOM", "ES2021"]
   },
-  "include": ["./*.ts", "./*.js"]
+  "include": ["./*.ts", "./*.js", "output/output-lib.ts", "output/output-script.ts"]
 }
