@@ -2,19 +2,96 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  font-size: 1.3em;
 }
 
 body {
   flex: 1;
   display: flex;
   flex-direction: column;
+  max-width: none !important;
 }
 
 main {
   flex: 1;
   display: flex;
+  gap: 5em;
 }
 
-main > * {
+.rule-line {
+  display: flex;
+  align-items: center;
+  gap: .7em;
+}
+
+.rule-line > input {
+  font-size: .8em;
+}
+
+.remove-button {
+  padding: .3em .5em;
+  font-size: 1.2em;
+}
+
+.add-button {
+  display: flex;
+  align-items: flex-start;
+  gap: .5em;
+  width: 100%;
+  justify-content: center;
+}
+
+textarea {
+  resize: none !important;
+  width: 600px !important;
   flex: 1;
+}
+
+.output-sub-headings {
+  display: flex;
+  align-items: flex-end;
+  gap: .5em;
+}
+
+
+button.icon {
+  padding: .2em .8em;
+  font-size: 1.3em;
+}
+
+
+button.with-icon {
+  display: flex;
+  gap: .5em;
+  align-items: flex-start;
+}
+
+button.with-icon > span {
+  font-size: 1.7em;
+  line-height: .7em;
+}
+
+.field {
+  background-color: hsla(0deg 0% 100% / 10%);
+  padding: .7em;
+  margin: -.7em;
+  border-radius: 6px;
+}
+
+.field > *:first-child {
+  margin-top: 0 !important;
+}
+
+.field > *:last-child {
+  margin-bottom: 0 !important;
+}
+
+input {
+  margin-right: 0 !important;
+}
+
+.point-right-arrow {
+  line-height: 1.6em;
+  align-self: flex-start;
+  font-size: 1.4em;
 }

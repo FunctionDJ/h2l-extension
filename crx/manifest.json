@@ -3,7 +3,7 @@
   "version": "0",
   "manifest_version": 3,
   "background": {
-    "service_worker": "./build/main.js"
+    "service_worker": "./background/build/background.js"
   },
   "permissions": ["tabs", "scripting"],
   "action": {},

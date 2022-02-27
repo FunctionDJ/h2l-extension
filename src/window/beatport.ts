@@ -1,15 +1,15 @@
-import { BeatportWindow } from "../types"
+import { BeatportWindow, Release } from "../types";
 
-export const getPageData = () => {
-  try {
-    const { ProductDetail, Playables } = window as BeatportWindow
-    const tracksOfRelease = Playables.tracks.filter(t => t.release.id === ProductDetail.id)
+export const getPageData = (): Release|string => {
+	try {
+		const { ProductDetail, Playables } = window as BeatportWindow;
+		const tracks = Playables.tracks.filter(t => t.release.id === ProductDetail.id);
   
-    return {
-      release: ProductDetail,
-      tracksOfRelease
-    }
-  } catch (error) {
-    return `Error: "${JSON.stringify(error)}"`
-  }
-}
+		return {
+			...ProductDetail,
+			tracks: tracks
+		};
+	} catch (error) {
+		return `Error: "${JSON.stringify(error)}"`;
+	}
+};
