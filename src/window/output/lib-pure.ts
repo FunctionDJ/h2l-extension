@@ -1,4 +1,4 @@
-import { Artist, Release, Rules, Track } from "../../../types";
+import { Artist, Release, Rules, Track } from "../../types";
 
 export const getReleaseSuffix = (release: Release, numberOfTracks: number) => {
 	if (/\W[el]p(\s*)?$/i.test(release.name)) { // ends with "LP" or "EP" plus optional trailing spaces

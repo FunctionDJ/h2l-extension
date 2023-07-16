@@ -10,12 +10,6 @@ chrome.runtime.onConnect.addListener(() => {
 	console.log("chrome.runtime.connected!");
 });
 
-// const artistPatches = [
-// 	{ replace: "Dlr", with: "DLR" }
-// ];
-
-// const capitalizeThese = ["dj", "mc", "vip"];
-
 const App = () => (
 	<ProvideState>
 		<Configuration/>

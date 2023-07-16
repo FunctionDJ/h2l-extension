@@ -1,6 +1,6 @@
 import { ComponentChildren, createContext } from "preact";
 import { StateUpdater, useContext, useState } from "preact/hooks";
-import { Rules } from "../../../types";
+import { Rules } from "../../types";
 
 export interface IState {
 	config: {
@@ -16,7 +16,7 @@ type IStateContext = [IState, StateUpdater<IState>];
 
 const createDefaultState = (): IState => ({
 	config: {
-		autoDownload: true,
+		autoDownload: false,
 		rules: {
 			artists: {
 				capitalizations: [""],

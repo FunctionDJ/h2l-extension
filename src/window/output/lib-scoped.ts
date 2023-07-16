@@ -1,4 +1,4 @@
-import { Release, Rules } from "../../../types";
+import { Release, Rules } from "../../types";
 import { applyRules, getSharedArtistOfTracks } from "./lib-pure";
 
 export const getArtistsString = (
@@ -24,13 +24,8 @@ export const getArtistsString = (
 	return artistsNames;
 };
 
-export const getLabelsContent = (releases: Release[], rules: Rules): string => {
-	const labels = new Set();
-
-	for (const release of releases) {
-		const labelNameWithRules = applyRules(release.label.name, rules);
-		labels.add(labelNameWithRules);
-	}
-
-	return Array.from(labels).join("\n"); // todo: also need capitalisation / substitution customization
-};
+export const getLabelsContent = (releases: Release[], rules: Rules): string => (
+	releases
+		.map(r => applyRules(r.label.name, rules))
+		.join("\n")
+);
