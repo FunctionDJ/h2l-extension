@@ -1,11 +1,11 @@
 {
-  "name": "h2l extension",
-  "version": "0.1",
-  "manifest_version": 3,
-  "background": {
-    "service_worker": "./background/build/background.js"
-  },
-  "permissions": ["tabs", "scripting"],
-  "action": {},
-  "host_permissions": ["*://*.beatport.com/release/"]
+	"name": "h2l extension",
+	"version": "0.2",
+	"manifest_version": 3,
+	"background": {
+		"service_worker": "./background/build/background.js"
+	},
+	"permissions": ["tabs"],
+	"action": {},
+	"host_permissions": ["*://*.beatport.com/release/"]
 }

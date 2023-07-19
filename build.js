@@ -1,33 +1,34 @@
-/* eslint-disable no-undef */
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const { build } = require("esbuild");
+import { context } from "esbuild";
 
-const mode = process.argv[2]
+const mode = process.argv[2];
 
 const shared = {
-	watch: mode === "dev",
 	minify: mode === "pack",
 	bundle: true,
-	logLevel: "info"
-}
+	logLevel: "info",
+};
 
-build({
+const backgroundContext = await context({
 	...shared,
-	entryPoints: [
-		"./src/background/background.ts"
-	],
+	entryPoints: ["./src/background/background.ts"],
 	outdir: "./crx/background/build/",
 	platform: "neutral",
-	tsconfig: "./src/background/tsconfig.json"
+	tsconfig: "./src/background/tsconfig.json",
 });
 
-build({
+const windowContext = await context({
 	...shared,
-	entryPoints: [
-		"./src/window/output/main.tsx"
-	],
+	entryPoints: ["./src/window/main.tsx"],
 	outdir: "./crx/content/build/",
 	platform: "browser",
 	tsconfig: "./src/window/tsconfig.json",
-	inject: ["./preact-shim.js"]
+	inject: ["./preact-shim.js"],
 });
+
+if (mode === "dev") {
+	backgroundContext.watch();
+	windowContext.watch();
+} else {
+	backgroundContext.rebuild().then(() => backgroundContext.dispose());
+	windowContext.rebuild().then(() => windowContext.dispose());
+}

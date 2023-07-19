@@ -1,18 +1,23 @@
 import { ComponentChildren, createContext } from "preact";
 import { StateUpdater, useContext, useState } from "preact/hooks";
-import { Rules } from "../../types";
 
-export interface IState {
+export type Rules = {
+	patches: {
+		replace: string;
+		with: string;
+	}[];
+	capitalizations: string[];
+};
+
+export type IState = {
 	config: {
-		autoDownload: boolean
+		autoDownload: boolean;
 		rules: {
-			artists: Rules
-			labels: Rules
-		}
-	}
-}
-
-type IStateContext = [IState, StateUpdater<IState>];
+			artists: Rules;
+			labels: Rules;
+		};
+	};
+};
 
 const createDefaultState = (): IState => ({
 	config: {
@@ -20,24 +25,22 @@ const createDefaultState = (): IState => ({
 		rules: {
 			artists: {
 				capitalizations: [""],
-				patches: [{ replace: "", with: "" }]
+				patches: [{ replace: "", with: "" }],
 			},
 			labels: {
 				capitalizations: [""],
-				patches: [{ replace: "", with: "" }]
-			}
-		}
-	}
+				patches: [{ replace: "", with: "" }],
+			},
+		},
+	},
 });
 
-const State = createContext<IStateContext>([
+const State = createContext<[IState, StateUpdater<IState>]>([
 	createDefaultState(),
-	(_state) => { /* noop */ }
+	(_state) => {
+		/* noop */
+	},
 ]);
-
-interface Props {
-	children: ComponentChildren
-}
 
 export const useAppState = () => useContext(State);
 
@@ -52,7 +55,7 @@ function useLocalStorage<T>(key: string, initialValue: T) {
 		}
 	});
 
-	const setValue: StateUpdater<T> = value => {
+	const setValue: StateUpdater<T> = (value) => {
 		try {
 			const newValue = value instanceof Function ? value(storedValue) : value;
 			setStoredValue(newValue);
@@ -65,7 +68,7 @@ function useLocalStorage<T>(key: string, initialValue: T) {
 	return [storedValue, setValue] as [T, StateUpdater<T>];
 }
 
-export const ProvideState = ({ children }: Props) => {
+export const ProvideState = ({ children }: { children: ComponentChildren }) => {
 	const value = useLocalStorage<IState>("state", createDefaultState());
-	return <State.Provider value={value} children={children}/>;
+	return <State.Provider value={value} children={children} />;
 };

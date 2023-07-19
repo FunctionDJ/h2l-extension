@@ -1,13 +1,15 @@
 {
-  "extends": "../../tsconfig.json",
-  "compilerOptions": {
-    "lib": ["DOM", "ES2021"],
-    "moduleResolution": "Node",
-    "jsx": "preserve",
+	"compilerOptions": {
+		"strict": true,
+		"lib": ["DOM", "ES2021"],
+		"moduleResolution": "Node",
+		"jsx": "preserve",
 		"jsxFactory": "h",
 		"jsxFragmentFactory": "Fragment",
 		"jsxImportSource": "preact",
-		"types": ["preact", "chrome"]
-  },
-  "include": ["./*.ts", "./output/ts/*.ts", "output/ts/content.tsx"]
+		"types": ["preact", "chrome"],
+		"noEmit": true,
+		"skipLibCheck": true
+	},
+	"include": ["./**/*.tsx"]
 }
