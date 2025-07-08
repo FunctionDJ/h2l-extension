@@ -3,7 +3,7 @@ import { ReleasesResponseData } from "./types";
 type ServiceWorkerMessage =
 	| {
 			type: "data";
-			data: ReleasesResponseData;
+			data: ReleasesResponseData["results"];
 	  }
 	| {
 			type: "error";

@@ -28,13 +28,13 @@ export const OutputsPanel = () => {
 				console.log("Content: Got data", message.data);
 
 				const newReleaseContent = getReleasesContent(
-					message.data.results,
+					message.data,
 					state.config.rules.artists
 				);
 
 				setReleaseContent(newReleaseContent);
 				const newLabelsContent = getLabelsContent(
-					message.data.results,
+					message.data,
 					state.config.rules.labels
 				);
 				setLabelsContent(newLabelsContent);

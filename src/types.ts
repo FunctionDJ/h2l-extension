@@ -7,6 +7,7 @@ export type ReleasesResponseData = {
 };
 
 export type Release = {
+	id: number;
 	name: string;
 	artists: Shared[];
 	track_count: number;

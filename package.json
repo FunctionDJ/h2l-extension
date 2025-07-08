@@ -2,7 +2,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "node ./build.js dev",
-		"buildAndZip": "node ./build.js pack && zip -r h2l-extension-v0.2.zip crx",
+		"buildAndZip": "node ./build.js pack && zip -r h2l-extension-v0.5.zip crx",
 		"tsc": "tsc --project ./src/window/tsconfig.json && tsc --project ./src/background/tsconfig.json"
 	},
 	"devDependencies": {
